@@ -9,6 +9,7 @@ const productSchema = new mongoose.Schema({
     stock: {type: Number, require: true},
     createdAt: {type: Date, require: true},
     imgs: {type: Array, default: true},
+    facturapiid: { type: String, require: true }
 });
 
 const Product = mongoose.model('Product', productSchema);

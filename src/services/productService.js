@@ -1,4 +1,5 @@
 const Product = require('../models/productModel');
+const facturapi = require('../apis/facturapi');
 
 module.exports = {
 
@@ -7,12 +8,14 @@ module.exports = {
     },
 
     createProduct: async (product) => {
-        const p = new Product(product);
-        return await p.save();
+        const newProduct = new Product(product);
+        const facturapiProduct = await facturapi.createProduct(product);
+        newProduct.facturapiid = facturapiProduct.id;
+        return await newProduct.save();
     },
 
-    updateProduct: async (_id, product) => {
-        return await Product.findByIdAndUpdate(_id,product);
+    updateProduct: async (_id, ...product) => {
+        return await Product.findByIdAndUpdate(_id, product), {new:true};
     },
 
     deleteProduct: async (_id) => { 

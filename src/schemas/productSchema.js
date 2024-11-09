@@ -19,15 +19,27 @@ const typeDefs = gql`
         brand: String!
         stock: Int!
         imgs: [String!]!
+        facturapiid: String
     }
 
-    input ProductInput {
+    input newProduct {
+        description: String!
+        price: Float!
+        category: String!
+        brand: String!
+        stock: Int!
+        imgs: [String!]
+        facturapiid: String
+    }
+
+    input updateProduct {
         description: String
         price: Float
         category: String
         brand: String
         stock: Int
         imgs: [String!]
+        facturapiid: String
     }
 
     type Query {
@@ -35,8 +47,8 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        createProduct(input: ProductInput!): Product
-        updateProduct(_id: ID!, input: ProductInput!): Product
+        createProduct(input: newProduct!): Product
+        updateProduct(_id: ID!, input: updateProduct!): Product
         deleteProduct(_id: ID!): Product
     }
 `;

@@ -2,16 +2,16 @@ const productService = require('../services/productService');
 
 const resolvers = {
     Query: {
-        products: () => productService.getAllProducts(),
+        products: async () => await productService.getAllProducts(),
     },
 
     Mutation: {
-        createProduct: async (_, { input }) => {
+        createProduct: async (_,input) => {
             const newProduct = {
                 ...input,
                 createdAt: new Date(),  // Asigna la fecha de creación aquí
             };
-            return productService.createProduct(newProduct);
+            return await productService.createProduct(newProduct);
         },
 
         updateProduct: async (_, { _id, input }) => {
@@ -19,7 +19,7 @@ const resolvers = {
         },
 
         deleteProduct: async (_, { _id }) => {
-            return productService.deleteProduct(_id);
+            return await productService.deleteProduct(_id);
         },
     },
 };
