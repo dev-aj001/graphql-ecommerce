@@ -16,12 +16,12 @@ module.exports = {
     },
 
     updateProduct: async ({_id, ...args}) => {
-        const productUpdated = await facturapi.updateProduct(_id, args);
-        console.log(productUpdated);
+        await facturapi.updateProduct(_id, args);
         return await Product.findByIdAndUpdate(_id, args, { new: true });
     },
 
     deleteProduct: async (_id) => {
+        await facturapi.deleteProduct(_id);
         return await Product.findByIdAndDelete(_id);
     },
 }

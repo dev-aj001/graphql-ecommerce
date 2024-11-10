@@ -1,5 +1,3 @@
-const { deleteProduct } = require('../services/productService');
-
 require('dotenv').config();
 
 const Facturapi = require('facturapi').default;
@@ -16,15 +14,16 @@ async function createProduct(product) {
 }
 
 async function updateProduct(_id, rest) {
-    
     const facturapiProduct = {
+        ...rest,
         description: rest.name || undefined,
-        ...rest
     };
-
-    console.log(facturapiProduct);
-
     return await facturapi.products.update(_id, facturapiProduct);
+}
+
+
+async function deleteProduct(_id){
+    return await facturapi.products.del(_id);
 }
 
 
