@@ -32,11 +32,13 @@ module.exports = {
         }
     },
 
-    updateUser: async (_id, user) => {
-        return await User.findByIdAndUpdate(_id, user);
+    updateUser: async ({_id, ...args}) => {
+        await facturapi.updateCustomer(_id, args);
+        return await User.findByIdAndUpdate(_id, args);
     },
 
     deleteUser: async (_id) => { 
+        await facturapi.deleteCustomer(_id);
         return await User.findByIdAndDelete(_id);
     },
     

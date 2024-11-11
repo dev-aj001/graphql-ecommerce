@@ -41,8 +41,7 @@ module.exports = {
 
     updateCustomer: async (_id, rest) => {
         const facturapiCustomer = {
-            ...rest,
-            description: rest.name || undefined,
+            ...rest
         };
         return await facturapi.customers.update(_id, facturapiCustomer);
     },

@@ -61,6 +61,7 @@ const typeDefs = gql`
         ): User
 
         updateUser(
+            _id: ID!,
             fullname: String,
             email: String,
             password: String,
