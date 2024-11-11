@@ -12,7 +12,7 @@ module.exports = {
             ...product  
         };
 
-        return (await Product.create(newProduct)).save();
+        return await Product.create(newProduct);
     },
 
     updateProduct: async ({_id, ...args}) => {
