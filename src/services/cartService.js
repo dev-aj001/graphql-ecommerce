@@ -6,14 +6,26 @@ module.exports = {
     getCartById: async (id) => {
         try {
             const cart = await Cart.findById(id)
-            .populate("user") // Aquí se obtiene el usuario completo
+            .populate("user") 
             .populate("items.productId");
 
             return cart;
         } catch (error) {
             console.error(error);
         }
-    },  
+    },
+
+    getCartsByUser: async (userId) => {
+        try {
+            const cart = await Cart.find({ user: userId })
+            .populate("user") 
+            .populate("items.productId");
+
+            return cart;
+        } catch (error) {
+            console.error(error);
+        }
+    },
 
     createCart: async (cart) => {
         return await Cart.create(cart);

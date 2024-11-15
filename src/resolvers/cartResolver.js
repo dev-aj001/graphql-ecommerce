@@ -3,6 +3,7 @@ const cartService = require('../services/cartService');
 const resolvers = {
   Query: {
     getCartById: async (_, { _id }) => await cartService.getCartById(_id),
+    getCartsByUser: async (_, { user }) => await cartService.getCartsByUser(user),
   },
   Mutation: {
     createCart: async (_, args) => await cartService.createCart(args),
