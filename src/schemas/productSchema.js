@@ -1,6 +1,6 @@
 const { gql } = require('apollo-server');
 
-const categories = require('../models/categories');
+const categories = require('../models/enums/categories');
 
 const typeDefs = gql`
     
