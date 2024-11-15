@@ -44,14 +44,14 @@ const typeDefs = gql`
   # Cart Type Definition and its requirements
 
   type Cart {
-    id: ID!
-    user: User!
-    items: [CartItem!]!
-    subtotal: Float!
-    tax: Float!
-    total: Float!
-    status: Boolean!
-    createdAt: String!
+    _id: ID!
+    user: User
+    items: [CartItem!]
+    subtotal: Float
+    tax: Float
+    total: Float
+    status: Boolean
+    createdAt: String
     closedAt: String
   }
 
@@ -66,15 +66,15 @@ const typeDefs = gql`
   }
 
   type Query {
-    getCart(id: ID!): Cart
+    getCartById(_id: ID!): Cart!
     getCartsByUser(user: ID!): [Cart!]!
     getActiveCart(user: ID!): [Cart!]!
   }
 
   type Mutation {
     createCart(user: ID!, items: [CartItemInput!]!): Cart!
-    updateCart(id: ID!, items: [CartItemInput!]!): Cart!
-    closeCart(id: ID!): Cart!
+    updateCart(_id: ID!, items: [CartItemInput!]!): Cart!
+    closeCart(_id: ID!): Cart!
   }
 `;
 
