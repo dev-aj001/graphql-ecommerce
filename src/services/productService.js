@@ -25,3 +25,5 @@ module.exports = {
         return await Product.findByIdAndDelete(_id);
     },
 }
+
+
